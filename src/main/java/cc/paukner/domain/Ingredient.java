@@ -2,20 +2,26 @@ package cc.paukner.domain;
 
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 /**
  * Created by jt on 6/13/17.
  */
 @Getter
 @Setter
+// This will not be a @Document, but contains a db reference to a uom document
 public class Ingredient {
 
-    private String id;
+//    @Id
+    // WTF is going on here? -- Create distinct property or so, because it's nested in a list
+    private String id = UUID.randomUUID().toString();
     private String description;
     private BigDecimal amount;
 
+    @DBRef
     private UnitOfMeasure uom;
     private Recipe recipe;
 
