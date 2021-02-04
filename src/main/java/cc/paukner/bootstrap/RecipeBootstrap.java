@@ -31,6 +31,13 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     private final RecipeRepository recipeRepository;
     private final UnitOfMeasureRepository unitOfMeasureRepository;
 
+//    @Autowired // temp
+//    UnitOfMeasureReactiveRepository unitOfMeasureReactiveRepository;
+//    @Autowired // temp
+//    CategoryReactiveRepository categoryReactiveRepository;
+//    @Autowired // temp
+//    RecipeReactiveRepository recipeReactiveRepository;
+
     public RecipeBootstrap(CategoryRepository categoryRepository,
                            RecipeRepository recipeRepository, UnitOfMeasureRepository unitOfMeasureRepository) {
         this.categoryRepository = categoryRepository;
@@ -45,6 +52,9 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         loadUom();
         recipeRepository.saveAll(getRecipes());
         log.debug("Loading Bootstrap Data");
+//        log.error("Reactive UOM repo size: " + unitOfMeasureReactiveRepository.count().block().toString());
+//        log.error("Reactive category repo size: " + categoryReactiveRepository.count().block().toString());
+//        log.error("Reactive recipe repo size: " + recipeReactiveRepository.count().block().toString());
     }
 
     private void loadCategories(){
