@@ -21,7 +21,7 @@ public class Ingredient {
     private String description;
     private BigDecimal amount;
 
-    @DBRef
+    @DBRef // not supported by MongoDB, will be changed later
     private UnitOfMeasure uom;
     private Recipe recipe;
 
