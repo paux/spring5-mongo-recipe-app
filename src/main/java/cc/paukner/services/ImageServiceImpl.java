@@ -29,7 +29,7 @@ public class ImageServiceImpl implements ImageService {
 
         Mono<Recipe> recipeMono = recipeReactiveRepository.findById(recipeId)
                 .map(recipe -> {
-                    Byte[] bytes = new Byte[0];
+                    Byte[] bytes;
                     try {
                         bytes = new Byte[file.getBytes().length];
 
